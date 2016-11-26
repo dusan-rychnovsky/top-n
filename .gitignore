@@ -1,0 +1,5 @@
+.idea/
+top-n.iml
+target/
+
+src/test/resources/dump
