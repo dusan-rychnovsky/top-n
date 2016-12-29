@@ -6,6 +6,9 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.PriorityQueue;
 import java.util.stream.Stream;
+import java.util.stream.StreamSupport;
+
+import static java.util.stream.StreamSupport.stream;
 
 public class TopN {
 
@@ -42,7 +45,7 @@ public class TopN {
    * A convenience interface for handing over an in-memory collection of entries.
    * See {@link #getTopN(Stream, Comparator, int)}.
    */
-  public static <T> List<T> getTopN(List<T> entries, Comparator<T> cmp, int n) {
-    return getTopN(entries.stream(), cmp, n);
+  public static <T> List<T> getTopN(Iterable<T> entries, Comparator<T> cmp, int n) {
+    return getTopN(stream(entries.spliterator(), false), cmp, n);
   }
 }
